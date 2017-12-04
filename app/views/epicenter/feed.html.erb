@@ -1,0 +1,22 @@
+<h1>Twitter Feed</h1>
+
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-body">
+			<%= image_tag current_user.avatar.url, class: "img-circle profile-pic" %>
+			<h4><%= link_to current_user.name, show_user_path(id: current_user.id) %></h4>
+			<p class="text-muted">@<%= link_to current_user.username, show_user_path(id: current_user.id) %></p>
+		</div>
+	</div>
+
+	<div class="col-md-8">
+			<div class="panel panel-body">
+				<%= render 'tweets/form', tweet: @tweet %>
+			</div>
+
+	    <% @following_tweets.each do |tweet| %>
+	    	<%= render 'a_tweet', tweet: tweet %>
+	    <% end %>
+	</div>
+</div>
